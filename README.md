@@ -1,3 +1,4 @@
+```yaml
 services:
   node-exporter:
     image: quay.io/prometheus/node-exporter:latest
@@ -13,7 +14,7 @@ services:
     image: abelodev/node-exporter-secure:latest
     container_name: node-exporter-secure
     environment:
-      API_BEARER_TOKEN: token
+      API_BEARER_TOKEN: "token"
     command: ["sh", "-c", "uvicorn app.main:app --host=0.0.0.0 --port=8000"]
     restart: unless-stopped
     healthcheck:
@@ -24,3 +25,5 @@ services:
       - "8000:8000"
     depends_on:
       - node-exporter
+
+```
