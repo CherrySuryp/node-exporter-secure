@@ -25,6 +25,7 @@ class RequestMetrics:
             return PlainTextResponse(
                 content="COULDN'T COLLECT METRICS. CHECK IF NODE-EXPORTER WORKS AND CONFIGURED PROPERLY",
                 status_code=status.HTTP_409_CONFLICT,
+                headers={"Cache-Control": "no-store, max-age=0, private"}
             )
         return PlainTextResponse(
             metrics, status_code=status.HTTP_200_OK, headers={"Cache-Control": "no-store, max-age=0, private"}
