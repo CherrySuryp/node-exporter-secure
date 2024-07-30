@@ -1,14 +1,21 @@
+# Node Exporter Secure
+This is a custom API written with FastAPI python framework, that forwards Prometheus Node-Exporter metrics data over secured endpoint with Bearer auth
+## Installation
+
+### Docker Compose
+  Fully complete `docker-compose.yml` ready to work, you only need to update `API_BEARER_TOKEN` env variable
 ```yaml
+name: node-exporter-secure
 services:
   node-exporter:
-    image: quay.io/prometheus/node-exporter:latest
-    container_name: node-exporter
-    command:
-      - '--path.rootfs=/host'
-    pid: host
-    restart: unless-stopped
-    volumes:
-      - /:/host:ro,rslave
+      image: quay.io/prometheus/node-exporter:latest
+      container_name: node-exporter
+      command:
+        - '--path.rootfs=/host'
+      pid: host
+      restart: unless-stopped
+      volumes:
+        - /:/host:ro,rslave
 
   api:
     image: abelodev/node-exporter-secure:latest
@@ -22,8 +29,14 @@ services:
       interval: 1m
       timeout: 10s
     ports:
-      - "8000:8000"
+      - "9100:8000"
     depends_on:
       - node-exporter
 
 ```
+
+## Environment Variables
+- `ENV` - `DEV/PROD` PROD disables documemtation and openapi endpoints
+- `API_BEARER_TOKEN` - Token for metrics
+- `METRICS_ROUTE` - Metrics route. Default set to `/metrics`
+- `NODE_EXPORTER_METRICS_PATH` - Node-Exporter endpoint path. Default set to `http://node-exporter:9100/metrics`
