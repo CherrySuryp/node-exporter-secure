@@ -36,7 +36,7 @@ services:
 ```
 
 ## Environment Variables
-- `ENV` - `DEV/PROD` PROD disables documemtation and openapi endpoints
-- `API_BEARER_TOKEN` - Token for metrics
+- `ENV` - `DEV` or `PROD`. Production env disables `/docs`, `/redoc` and `/openapi.json` endpoints. `PROD` is set by default.
+- `API_BEARER_TOKEN` - Your Bearer token auth
 - `METRICS_ROUTE` - Metrics route. Default set to `/metrics`
 - `NODE_EXPORTER_METRICS_PATH` - Node-Exporter endpoint path. Default set to `http://node-exporter:9100/metrics`
