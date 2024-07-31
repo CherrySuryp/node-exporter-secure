@@ -1,5 +1,5 @@
 # Node Exporter Secure
-This is a custom API written with FastAPI python framework that forwards [Prometheus Node-Exporter](https://github.com/prometheus/node_exporter) metrics data over secured endpoint with Bearer auth
+This is a custom API written with FastAPI Python framework that forwards [Prometheus Node-Exporter](https://github.com/prometheus/node_exporter) metrics data over secured endpoint with Bearer Auth
 
 ## Installation
 ### Docker-Compose
