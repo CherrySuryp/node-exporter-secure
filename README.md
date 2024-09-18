@@ -5,7 +5,6 @@ This is a custom API written with FastAPI Python framework that forwards [Promet
 ### Docker-Compose
   Fully complete `docker-compose.yml` ready to deploy, you only need to update `API_BEARER_TOKEN` env variable
 ```yaml
-name: node-exporter-secure
 services:
   node-exporter:
       image: quay.io/prometheus/node-exporter:latest
